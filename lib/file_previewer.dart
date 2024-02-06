@@ -5,8 +5,8 @@ import 'package:file_previewer/config.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:pdfx/pdfx.dart';
 import 'package:path/path.dart' show extension;
+import 'package:pdfx_plugin/pdfx_plugin.dart';
 
 class FilePreview {
   static const MethodChannel _channel = MethodChannel('file_preview');
@@ -33,8 +33,7 @@ class FilePreview {
         );
       default:
         if (Platform.isIOS) {
-          final Uint8List byteList =
-              await _channel.invokeMethod('getThumbnail', filePath);
+          final Uint8List byteList = await _channel.invokeMethod('getThumbnail', filePath);
           return Image.memory(byteList);
         } else {
           return _defaultImage(filePath);
@@ -55,9 +54,7 @@ class FilePreview {
         width: width ?? 80,
         height: height ?? 100,
       );
-      return image != null
-          ? Image.memory(image.bytes)
-          : _defaultImage(filePath);
+      return image != null ? Image.memory(image.bytes) : _defaultImage(filePath);
     } catch (e) {
       return _defaultImage(filePath);
     }
