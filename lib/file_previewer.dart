@@ -6,7 +6,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:path/path.dart' show extension;
-import 'package:pdfx_plugin/pdfx_plugin.dart';
+import 'package:pdfx/pdfx.dart';
 
 class FilePreview {
   static const MethodChannel _channel = MethodChannel('file_preview');
